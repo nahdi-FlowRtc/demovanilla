@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>FlowRTC Demo</title>
+ <link rel="icon" type="image/x-icon" href="./icon.png">
+<style>
+:root{
+  --bg:#f5f7fb;
+  --card:#ffffff;
+  --border:#e5e7eb;
+  --primary:#2563eb;
+  --success:#16a34a;
+  --danger:#dc2626;
+  --warning:#f59e0b;
+  --text:#111827;
+  --muted:#6b7280;
+}
+
+*{
+  box-sizing:border-box;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
+
+ body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(
+    135deg,
+    #ff4e9b,
+    #9d4edd,
+    #ff7b00
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  width:100%;
+  max-width:1000px;
+}
+
+h1{
+  text-align:center;
+  font-size:22px;
+  margin-bottom:30px;
+  font-weight:600;
+}
+
+.card{
+  background:var(--card);
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,0.05);
+  margin-bottom:25px;
+}
+
+/* VIDEO SECTION */
+.streams{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+}
+
+video{
+  width:100%;
+  height:100%;
+  background:#000;
+  border-radius:12px;
+}
+
+/* TEXTAREA */
+textarea{
+  width:100%;
+  min-height:90px;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid var(--border);
+  resize:vertical;
+  font-size:14px;
+  margin-bottom:12px;
+}
+
+/* BUTTONS */
+.buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+button{
+  flex:1;
+  min-width:150px;
+  padding:10px 14px;
+  border:none;
+  border-radius:8px;
+  font-weight:500;
+  cursor:pointer;
+  transition:0.2s ease;
+  color:white;
+}
+
+/* Button Variants */
+.primary{ background:var(--primary); }
+.success{ background:var(--success); }
+.danger{ background:var(--danger); }
+.warning{ background:var(--warning); }
+.secondary{ background:#64748b; }
+
+button:hover{
+  transform:translateY(-2px);
+  opacity:0.9;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1 style="display: flex;align-items: center;justify-content: center;gap: 10px;color: white;font-weight: bold;font-family: sans-serif;">FlowRTC Connection Demo |  Git : https://github.com/devtunis<img src="./icon.png" style="width: 60px;"/>   </h1>
+
+
+<div class="card streams">
+  <video class="localVideo" autoplay muted></video>
+  <video class="remoteVideo" autoplay></video>
+</div>
+
+<div class="card">
+  <textarea placeholder="Paste Offer here..." id="textarea-offer"></textarea>
+  <textarea placeholder="Paste Answer here..." id="textarea-anwser"></textarea>
+  <textarea placeholder="ICE Candidates (output)" id="textarea-ice"></textarea>
+  <textarea placeholder="Paste ICE here..." id="textarea-eat-ice"></textarea>
+</div>
+
+<div class="card buttons">
+  <button id="offer" class="primary">Create Offer</button>
+  <button id="answer" class="success">Create Answer</button>
+  <button id="makeConnection" class="secondary">Establish</button>
+  <button id="close" class="danger">Close</button>
+  <button id="makeNewConnection" class="warning">New</button>
+  <button id="show-ice" class="primary">Show ICE</button>
+  <button id="eat-ice" class="success">Add ICE</button>
+</div>
+
+</div>
+
+<script type="module" src="./test.js"></script>
+</body>
+</html>
